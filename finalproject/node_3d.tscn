@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bevy55fq2rrp3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fqsdw"]
+size = Vector2(50, 50)
+
+[node name="Game" type="Node"]
+
+[node name="ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_fqsdw")

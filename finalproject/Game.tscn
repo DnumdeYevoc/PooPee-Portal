@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2o0ukc75ooyi"]
+
+[ext_resource type="PackedScene" uid="uid://baotyfgwkgnur" path="res://Player.tscn" id="1_283go"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fqsdw"]
+size = Vector2(50, 50)
+
+[node name="Game" type="Node"]
+
+[node name="ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_fqsdw")
+
+[node name="Player" parent="." instance=ExtResource("1_283go")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05837, 0)
