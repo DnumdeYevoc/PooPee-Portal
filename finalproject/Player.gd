@@ -1,8 +1,12 @@
 extends CharacterBody3D
-var speed : float = 300.0
+var speed : int = 3000
+var sens : int = 3 #Sensitivity
+
+
 
 @onready var neck = $Neck
 @onready var cam = $Neck/Camera3D2
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -11,12 +15,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			neck.rotate_y-(event.relative.x *0.01)
-			cam.rotate_x(-event.relative.y *0.01)
-			
+			neck.rotate_y(-event.relative.x *0.001*sens)
+			cam.rotate_x(-event.relative.y *0.001*sens)
+			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-30), deg_to_rad(60))
 func _physics_process(delta: float) -> void:
-	var dir : Vector3 = Vector3( Input.get_action_strength("Forward")-Input.get_action_strength("Backward") , 0, Input.get_action_strength("Right")-Input.get_action_strength("Left"))
+	var dir : Vector3 = (neck.transform.basis * Vector3(  Input.get_action_strength("Right")-Input.get_action_strength("Left") , 0,Input.get_action_strength("Backward")-Input.get_action_strength("Forward"))).normalized()
 	
 	velocity = Vector3(dir*speed*delta)
-	print(dir)
 	move_and_slide()
