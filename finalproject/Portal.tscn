@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgmqc2vbcbdw6"]
+
+[ext_resource type="Script" path="res://Portal.gd" id="1_n7w3h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ha1ku"]
+margin = 1.0
+size = Vector3(1, 2, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frnor"]
+size = Vector3(1, 2, 0.3)
+
+[node name="Portal" type="Area3D"]
+script = ExtResource("1_n7w3h")
+
+[node name="PortalVisual" type="CSGBox3D" parent="."]
+size = Vector3(1, 2, 0.3)
+
+[node name="CameraViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraViewport"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ha1ku")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("BoxShape3D_frnor")
+target_position = Vector3(0, 0, 0)

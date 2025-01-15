@@ -1,6 +1,6 @@
 extends CharacterBody3D
-var speed : int = 3000
-var sens : int = 3 #Sensitivity
+var speed : int = 1000
+var sens : int = 5 #Sensitivity
 
 
 
@@ -17,7 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x *0.001*sens)
 			cam.rotate_x(-event.relative.y *0.001*sens)
-			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-30), deg_to_rad(60))
+			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 func _physics_process(delta: float) -> void:
 	var dir : Vector3 = (neck.transform.basis * Vector3(  Input.get_action_strength("Right")-Input.get_action_strength("Left") , 0,Input.get_action_strength("Backward")-Input.get_action_strength("Forward"))).normalized()
 	

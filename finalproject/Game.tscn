@@ -1,15 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2o0ukc75ooyi"]
+[gd_scene load_steps=5 format=3 uid="uid://b2o0ukc75ooyi"]
 
 [ext_resource type="PackedScene" uid="uid://baotyfgwkgnur" path="res://Player.tscn" id="1_283go"]
+[ext_resource type="PackedScene" uid="uid://cgmqc2vbcbdw6" path="res://Portal.tscn" id="2_on2hb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fqsdw"]
 size = Vector2(50, 50)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8171r"]
+
 [node name="Game" type="Node"]
 
 [node name="ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.0200648, 0.0221305, -0.0433277)
 mesh = SubResource("QuadMesh_fqsdw")
+surface_material_override/0 = SubResource("StandardMaterial3D_8171r")
 
 [node name="Player" parent="." instance=ExtResource("1_283go")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05837, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 200, 200, 200)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4361, 2.25136, -0.0648847)
+
+[node name="Portal" parent="." instance=ExtResource("2_on2hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12584, 3.81143, 0)
+
+[node name="Portal2" parent="." instance=ExtResource("2_on2hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12584, 3.81143, 2.3862)
