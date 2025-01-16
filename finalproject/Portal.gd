@@ -2,7 +2,8 @@
 class_name Portal
 extends Area3D
 
-@export var other_portal : Node3D
+
+@export var other_portal : Portal 
 @export var cull_layer : int = 4
 
 @export var portal_area_z_margin := 1.0
@@ -38,19 +39,24 @@ func do_updates():
 	$CollisionShape3D.disabled = not self.visible
 	#collision
 	
+	
 	update_camera_to_other_portal()
 	update_size()
+	
 func _process(delta):
 	update_size()
 	
 func _physics_process(delta):
 	do_updates()
 	
+	
 func _ready():
+	
 	if Engine.is_editor_hint():
 		pass
 	$PortalVisual.set_layer_mask_value(1, false)
 	$PortalVisual.set_layer_mask_value(cull_layer, true)
+	$CameraViewport/Camera3D.set_cull_mask_value(other_portal.cull_layer, false)
 	update_size()
 	no_tonemap()
 	
@@ -69,3 +75,15 @@ func no_tonemap():
 	
 	$CameraViewport/Camera3D.environment = world_3d.environment.duplicate()
 	$CameraViewport/Camera3D.environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
+
+func teleport(body: PhysicsBody3D):
+	print("teleported")
+	var rel_this_portal = self.global_transform.affine_inverse()* body.global_transform
+	var move = other_portal.global_transform * rel_this_portal
+	body.global_tranform = move
+	
+	other_portal.do_updates()
+
+func _on_body_entered(body: Node3D) -> void:
+	teleport(body)
+	

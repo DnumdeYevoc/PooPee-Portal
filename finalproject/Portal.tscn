@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgmqc2vbcbdw6"]
+[gd_scene load_steps=7 format=3 uid="uid://cgmqc2vbcbdw6"]
 
 [ext_resource type="Script" path="res://Portal.gd" id="1_n7w3h"]
+[ext_resource type="Shader" path="res://PortalShader.gdshader" id="2_u74yg"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q351g"]
+viewport_path = NodePath("CameraViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n14c"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_u74yg")
+shader_parameter/texture_albedo = SubResource("ViewportTexture_q351g")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ha1ku"]
 margin = 1.0
@@ -14,6 +24,7 @@ script = ExtResource("1_n7w3h")
 
 [node name="PortalVisual" type="CSGBox3D" parent="."]
 size = Vector3(1, 2, 0.3)
+material = SubResource("ShaderMaterial_6n14c")
 
 [node name="CameraViewport" type="SubViewport" parent="."]
 
@@ -25,3 +36,8 @@ shape = SubResource("BoxShape3D_ha1ku")
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 shape = SubResource("BoxShape3D_frnor")
 target_position = Vector3(0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35346, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

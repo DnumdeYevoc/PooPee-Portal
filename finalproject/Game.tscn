@@ -21,11 +21,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05837, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 200, 200, 200)
 
+[node name="Portal" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
+transform = Transform3D(-0.004311, 0, -0.999991, 0, 1, 0, 0.999991, 0, -0.004311, 1.86946, 1.09035, 0.748121)
+other_portal = NodePath("../Portal2")
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
+transform = Transform3D(0.148275, 0, 0.988946, 0, 1, 0, -0.988946, 0, 0.148275, 1.12584, 0.927557, 8.74288)
+other_portal = NodePath("../Portal")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4361, 2.25136, -0.0648847)
-
-[node name="Portal" parent="." instance=ExtResource("2_on2hb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12584, 3.81143, 0)
-
-[node name="Portal2" parent="." instance=ExtResource("2_on2hb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12584, 3.81143, 2.3862)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.309441, 0, 0.783563)
