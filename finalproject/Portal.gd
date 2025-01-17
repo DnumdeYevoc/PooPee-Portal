@@ -12,6 +12,9 @@ extends Area3D
 
 @export var size : = Vector2(1,2)
 
+var do_teleport: bool = true
+
+	
 func update_camera_to_other_portal():
 	var cur_camera = get_viewport().get_camera_3d()
 	if not cur_camera:
@@ -36,10 +39,6 @@ func update_camera_to_other_portal():
 	
 	
 func do_updates():
-	$CollisionShape3D.disabled = not self.visible
-	#collision
-	
-	
 	update_camera_to_other_portal()
 	update_size()
 	
@@ -51,15 +50,11 @@ func _physics_process(delta):
 	
 	
 func _ready():
-	
-	if Engine.is_editor_hint():
-		pass
 	$PortalVisual.set_layer_mask_value(1, false)
 	$PortalVisual.set_layer_mask_value(cull_layer, true)
 	$CameraViewport/Camera3D.set_cull_mask_value(other_portal.cull_layer, false)
-	update_size()
-	no_tonemap()
 	
+	update_size()
 func update_size():
 	$PortalVisual.size.x = self.size.x
 	$PortalVisual.size.y = self.size.y
@@ -68,22 +63,19 @@ func update_size():
 		self.size.y + self.portal_area_y_margin * 2,
 		self.portal_area_z_margin * 2)
 		
-func no_tonemap():
-	var world_3d = get_viewport().world_3d
-	if not world_3d or not world_3d.environment:
-		return
-	
-	$CameraViewport/Camera3D.environment = world_3d.environment.duplicate()
-	$CameraViewport/Camera3D.environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
-
 func teleport(body: PhysicsBody3D):
-	print("teleported")
-	var rel_this_portal = self.global_transform.affine_inverse()* body.global_transform
+	var rel_this_portal = self.global_transform.affine_inverse() * body.global_transform 
 	var move = other_portal.global_transform * rel_this_portal
-	body.global_tranform = move
+	body.global_transform = move
+	body.neck.rotation.y = -other_portal.rotation.y#fix to make camera rotate with portal
 	
 	other_portal.do_updates()
-
-func _on_body_entered(body: Node3D) -> void:
-	teleport(body)
+	other_portal.do_teleport = false
 	
+func _on_body_entered(body: Node3D) -> void:
+	if do_teleport:
+		teleport(body)
+
+
+func _on_body_exited(body: Node3D) -> void:
+	do_teleport = true

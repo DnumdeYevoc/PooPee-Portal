@@ -21,9 +21,12 @@ size = Vector3(1, 2, 0.3)
 
 [node name="Portal" type="Area3D"]
 script = ExtResource("1_n7w3h")
+portal_area_z_margin = 0.0
+portal_area_x_margin = 0.0
+portal_area_y_margin = 0.0
 
 [node name="PortalVisual" type="CSGBox3D" parent="."]
-size = Vector3(1, 2, 0.3)
+size = Vector3(1, 2, 0)
 material = SubResource("ShaderMaterial_6n14c")
 
 [node name="CameraViewport" type="SubViewport" parent="."]
@@ -37,7 +40,5 @@ shape = SubResource("BoxShape3D_ha1ku")
 shape = SubResource("BoxShape3D_frnor")
 target_position = Vector3(0, 0, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35346, 0)
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
