@@ -14,7 +14,3 @@ shape = SubResource("CapsuleShape3D_ko7oo")
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 
 [node name="Camera3D2" type="Camera3D" parent="Neck"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0896299, 0.0612428, 0.0440895)
-size = Vector3(0.443634, 1.73907, 0.530212)

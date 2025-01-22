@@ -64,11 +64,14 @@ func update_size():
 		self.portal_area_z_margin * 2)
 		
 func teleport(body: PhysicsBody3D):
+	body.offset +=   other_portal.rotation.y -self.rotation.y
 	var rel_this_portal = self.global_transform.affine_inverse() * body.global_transform 
 	var move = other_portal.global_transform * rel_this_portal
 	body.global_transform = move
-	body.neck.rotation.y = -other_portal.rotation.y#fix to make camera rotate with portal
+
+	 #fix to make camera rotate with portal
 	
+
 	other_portal.do_updates()
 	other_portal.do_teleport = false
 	
