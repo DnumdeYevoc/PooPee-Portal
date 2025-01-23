@@ -5,12 +5,23 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ko7oo"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_mwj1j")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ko7oo")
 
 [node name="Neck" type="Node3D" parent="."]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+light_energy = 10.0
+light_indirect_energy = 15.0
+light_volumetric_fog_energy = 10.0
+light_size = 10.0
+light_specular = 2.0
+spot_range = 100.0
+spot_angle = 120.0
 
 [node name="Camera3D2" type="Camera3D" parent="Neck"]

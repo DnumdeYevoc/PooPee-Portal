@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2o0ukc75ooyi"]
+[gd_scene load_steps=8 format=3 uid="uid://b2o0ukc75ooyi"]
 
 [ext_resource type="Texture2D" uid="uid://hgcypqiupopj" path="res://Ground.png" id="1_3ycum"]
 [ext_resource type="PackedScene" uid="uid://baotyfgwkgnur" path="res://Player.tscn" id="1_283go"]
-[ext_resource type="PackedScene" uid="uid://cgmqc2vbcbdw6" path="res://Portal.tscn" id="2_on2hb"]
+[ext_resource type="Script" path="res://game.gd" id="1_wlm3h"]
+[ext_resource type="PackedScene" uid="uid://bf4yul5kba1mo" path="res://Map.tscn" id="2_dr8kx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo6ff"]
 albedo_texture = ExtResource("1_3ycum")
@@ -11,48 +12,22 @@ texture_filter = 0
 [sub_resource type="QuadMesh" id="QuadMesh_fqsdw"]
 size = Vector2(50, 50)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3qbc"]
+size = Vector3(50, 50, 0)
+
 [node name="Game" type="Node"]
+script = ExtResource("1_wlm3h")
+Map = ExtResource("2_dr8kx")
 
 [node name="ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.011887, 0.0221305, -0.0617803)
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_bo6ff")
 mesh = SubResource("QuadMesh_fqsdw")
 
+[node name="RigidBody3D" type="RigidBody3D" parent="ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/RigidBody3D"]
+shape = SubResource("BoxShape3D_a3qbc")
+
 [node name="Player" parent="." instance=ExtResource("1_283go")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05837, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 200, 200, 200)
-
-[node name="Portal" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
-transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 4.44891, 1.13351, 21.3005)
-other_portal = NodePath("../Portal2")
-size = Vector2(100, 100)
-
-[node name="Portal6" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9178, 1.13351, -12.2392)
-other_portal = NodePath("../Portal5")
-size = Vector2(50, 50)
-
-[node name="Portal5" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44891, 1.13351, -13.3049)
-other_portal = NodePath("../Portal6")
-size = Vector2(50, 50)
-
-[node name="Portal3" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
-transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 11.4517, 1.13351, 9.06999)
-other_portal = NodePath("../Portal4")
-size = Vector2(50, 50)
-
-[node name="Portal4" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -19.3379, 1.13351, 3.56687)
-other_portal = NodePath("../Portal3")
-size = Vector2(100, 100)
-
-[node name="Portal2" parent="." node_paths=PackedStringArray("other_portal") instance=ExtResource("2_on2hb")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -10.5082, 1.12885, 15.9073)
-other_portal = NodePath("../Portal")
-size = Vector2(100, 100)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07686, 0.347741, 1.22309)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05837, 5.77036)

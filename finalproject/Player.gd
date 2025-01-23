@@ -7,6 +7,7 @@ var sens : int = 5 #Sensitivity
 @onready var neck = $Neck
 @onready var cam = $Neck/Camera3D2
 var offset :float= 0
+@onready var dir:= Vector3(0,0,0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -21,7 +22,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	var looking = neck.transform.basis.rotated(Vector3.UP,offset)
-	var dir : Vector3 = ( looking * Vector3(  Input.get_action_strength("Right")-Input.get_action_strength("Left") , 0,Input.get_action_strength("Backward")-Input.get_action_strength("Forward"))).normalized()
+	dir = ( looking * Vector3(  Input.get_action_strength("Right")-Input.get_action_strength("Left") , 0,Input.get_action_strength("Backward")-Input.get_action_strength("Forward"))).normalized()
 	
 	velocity = Vector3(dir*speed*delta)
 	move_and_slide()
+
+	
