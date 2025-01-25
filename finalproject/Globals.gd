@@ -1,3 +1,4 @@
 extends Node
 
-const GRID_SIZE = 4
+const GRID_SIZE = 10
+const GRAVITY = 50

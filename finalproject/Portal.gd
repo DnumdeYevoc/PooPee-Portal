@@ -13,7 +13,7 @@ extends Area3D
 @export var size : = Vector2(1,2)
 
 var do_teleport: bool = true
-
+var index :int
 	
 func update_camera_to_other_portal():
 	var cur_camera = get_viewport().get_camera_3d()
