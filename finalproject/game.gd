@@ -44,7 +44,7 @@ func generate_map():
 					portal.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
 					portal.index= x
 					portal.size = Vector2(Globals.GRID_SIZE,Globals.GRID_SIZE)
-					
+					portal.rot = tilemap.get_cell_source_id(tile)
 					portallist.append(portal)
 					print(portal.position)
 

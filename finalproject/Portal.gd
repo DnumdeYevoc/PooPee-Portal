@@ -14,7 +14,7 @@ extends Area3D
 
 var do_teleport: bool = true
 var index :int
-	
+var rot:int=0
 func update_camera_to_other_portal():
 	var cur_camera = get_viewport().get_camera_3d()
 	if not cur_camera:
@@ -62,7 +62,7 @@ func update_size():
 		self.size.x + self.portal_area_x_margin * 2,
 		self.size.y + self.portal_area_y_margin * 2,
 		self.portal_area_z_margin * 2)
-		
+	rotation_degrees.y = rot*90
 func teleport(body: PhysicsBody3D):
 	body.offset +=   other_portal.rotation.y -self.rotation.y
 	var rel_this_portal = self.global_transform.affine_inverse() * body.global_transform 
