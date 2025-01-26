@@ -47,7 +47,7 @@ func do_updates():
 func _physics_process(_delta):
 	
 	do_updates()
-	update_size()
+
 	
 func _ready():
 	$PortalVisual.set_layer_mask_value(1, false)
@@ -74,11 +74,7 @@ func update_size():
 		self.size.y + self.portal_area_y_margin * 2,
 		self.portal_area_z_margin * 2)
 	rotation_degrees.y = rot*90
-	$RigidBody3D/Floor.shape.size =Vector3(
-		self.size.x*2,
-		0,
-		 2)
-	$RigidBody3D/Floor.position.y= -self.size.y/2 -0.01
+	
 func teleport(body: PhysicsBody3D):
 	body.offset +=   other_portal.rotation.y -self.rotation.y
 	var rel_this_portal = self.global_transform.affine_inverse() * body.global_transform 

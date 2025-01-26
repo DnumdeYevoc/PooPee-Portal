@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgmqc2vbcbdw6"]
+[gd_scene load_steps=6 format=3 uid="uid://cgmqc2vbcbdw6"]
 
 [ext_resource type="Script" path="res://Portal.gd" id="1_n7w3h"]
 [ext_resource type="Shader" path="res://PortalShader.gdshader" id="2_u74yg"]
@@ -16,8 +16,6 @@ shader_parameter/texture_albedo = SubResource("ViewportTexture_q351g")
 margin = 1.0
 size = Vector3(1, 2, 0.3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vvxxf"]
-
 [node name="Portal" type="Area3D"]
 script = ExtResource("1_n7w3h")
 portal_area_z_margin = 0.0
@@ -34,11 +32,6 @@ material = SubResource("ShaderMaterial_6n14c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ha1ku")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-
-[node name="Floor" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_vvxxf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
