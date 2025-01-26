@@ -7,9 +7,9 @@ var count = 0
 @onready var cam = $Neck/Camera3D2
 var offset :float= 0
 @onready var dir:= Vector3(0,0,0)
-var gravity := Vector3(0,-1,0)
+var gravity := Vector3i(0,-1,0)
 var rotate_cam: bool = false
-var angle := 0
+var angle :int= 0
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 			rotate_cam = false
 			count = 0
 		
-	velocity = Vector3(dir*speed*delta)+gravity*Globals.GRAVITY
+	velocity = Vector3i(dir*speed*delta)+gravity*Globals.GRAVITY
 	move_and_slide()
 
 	

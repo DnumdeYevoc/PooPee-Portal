@@ -15,10 +15,7 @@ func _ready() -> void:
 	generate_map()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+
 func generate_map():
 	if not Map is PackedScene: return
 	var map = Map.instantiate()
@@ -40,26 +37,27 @@ func generate_map():
 				if tilemap.get_cell_atlas_coords(tile)== Vector2i(x,1):
 					
 					var portal = PortalScene.instantiate()
-					
-					portal.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
 					portal.index= x
+					portal.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
 					portal.size = Vector2(Globals.GRID_SIZE,Globals.GRID_SIZE)
 					portal.rot = tilemap.get_cell_source_id(tile)
 					portallist.append(portal)
-					print(portal.position)
-
+					#portallinking
+					for other_portal in portallist:
+						if not other_portal == self:
+							if other_portal.index == portal.index:
+								other_portal.other_portal = portal
+								portal.other_portal = other_portal
+								
+					add_child(portal)
+					portal.do_updates()
 				
 		if len(world)== len(tilemap_list):
 			for cell in cells:
 				cell.update_faces(world)
 				
-	#portallinking
-	for port in portallist:
-		for other_port in portallist:
-			if other_port.index == port.index:
-				other_port.other_portal = port
-				port.other_portal = other_port
-		self.add_child(port)
-		port.do_updates()
+	
+
+			
 	count = -1
 	map.free()

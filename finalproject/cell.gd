@@ -8,11 +8,12 @@ class_name Cell
 @onready var eastface:= $EastFace
 @onready var westface:= $WestFace
 @onready var southface:= $SouthFace
-var world := []
+
 var count :int = -1
 
 func _ready() -> void:
 	for child in get_children():
+		@warning_ignore("integer_division")
 		child.position *= Vector3(Globals.GRID_SIZE/2,Globals.GRID_SIZE/2,Globals.GRID_SIZE/2)
 		child.scale = Vector3(Globals.GRID_SIZE,Globals.GRID_SIZE,Globals.GRID_SIZE)
 		
@@ -25,6 +26,7 @@ func update_faces(world):
 	for layer in world:
 		count+=1
 		if position.y/Globals.GRID_SIZE== count:
+			@warning_ignore("narrowing_conversion")
 			var my_grid_pos = Vector2i(position.x/Globals.GRID_SIZE, position.z/Globals.GRID_SIZE)
 			if layer.has(my_grid_pos + Vector2i.RIGHT):
 				eastface.hide()
