@@ -97,17 +97,21 @@ sources/0 = SubResource("TileSetAtlasSource_ek8jq")
 script = ExtResource("1_icsjc")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wEAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAgAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AQAAAAEAAAD/////AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
 
 [node name="Layer" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
 
 [node name="Layer1" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAP//AAADAAAAAAD/////AAADAAAAAAD//wAAAAADAAAAAAAAAAAAAAADAAAAAAAAAAEAAAADAAAAAAD//wEAAAAAAAAAAAD+/wEAAAADAAAAAAD+/wAAAAADAAAAAAD+////AAADAAAAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
 
 [node name="Layer2" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAAAAAAAAADAP3/AAAAAAEAAAA=")
 tile_set = SubResource("TileSet_vfn8j")

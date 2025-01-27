@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://g8l863gt7w52"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_yh4qp"]
-[ext_resource type="Texture2D" uid="uid://csth3s248fn23" path="res://North_TILEMAP.png" id="2_a73wq"]
+[ext_resource type="Texture2D" uid="uid://x0w5vcado6ax" path="res://North_TILEMAP.png" id="2_a73wq"]
 [ext_resource type="Texture2D" uid="uid://qs4mv5w8si0v" path="res://West_TILEMAP.png" id="3_pwgtr"]
 [ext_resource type="Texture2D" uid="uid://caxg3nui5cj5v" path="res://South_TILEMAP.png" id="4_g2lf4"]
 [ext_resource type="Texture2D" uid="uid://h7mbrt7swyx0" path="res://East_TILEMAP.png" id="5_yxk07"]
@@ -97,13 +97,16 @@ sources/1 = SubResource("TileSetAtlasSource_d85ei")
 script = ExtResource("1_yh4qp")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AQAAAAEAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
 
 [node name="Layer1" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
 
 [node name="Layer2" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAAAAAAAAADAP3/AAAAAAEAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
