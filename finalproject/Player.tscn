@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Player.gd" id="1_mwj1j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ko7oo"]
+height = 7.0
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3

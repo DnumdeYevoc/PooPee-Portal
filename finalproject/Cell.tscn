@@ -1,11 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://cm66mrkem0mt1"]
+[gd_scene load_steps=19 format=3 uid="uid://cm66mrkem0mt1"]
 
 [ext_resource type="Script" path="res://cell.gd" id="1_w24d4"]
 [ext_resource type="Texture2D" uid="uid://2ck44sa2j5e2" path="res://Floor.png" id="2_tppyw"]
+[ext_resource type="Texture2D" uid="uid://desov5sv82fru" path="res://Floor_NormalMap.png" id="3_cyplp"]
 [ext_resource type="Texture2D" uid="uid://dxhf0cjisq5rw" path="res://Wall.png" id="3_g1ofc"]
+[ext_resource type="Texture2D" uid="uid://ul675osldq0k" path="res://Wall_NormalMap.png" id="5_xh5dr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibokg"]
 albedo_texture = ExtResource("2_tppyw")
+normal_enabled = true
+normal_texture = ExtResource("3_cyplp")
 texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_0hrk6"]
@@ -15,6 +19,8 @@ size = Vector3(1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3ue6"]
 albedo_texture = ExtResource("2_tppyw")
+normal_enabled = true
+normal_texture = ExtResource("3_cyplp")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxdk1"]
@@ -22,6 +28,9 @@ size = Vector3(1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx77e"]
 albedo_texture = ExtResource("3_g1ofc")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_xh5dr")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8unrh"]
@@ -29,6 +38,9 @@ size = Vector3(1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmm1h"]
 albedo_texture = ExtResource("3_g1ofc")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_xh5dr")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x0b3"]
@@ -36,6 +48,9 @@ size = Vector3(1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78rbi"]
 albedo_texture = ExtResource("3_g1ofc")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_xh5dr")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6h3qh"]
@@ -43,6 +58,9 @@ size = Vector3(1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4raix"]
 albedo_texture = ExtResource("3_g1ofc")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_xh5dr")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pm5dr"]
