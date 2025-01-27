@@ -36,9 +36,10 @@ func generate_map():
 			if tilemap.get_cell_atlas_coords(tile)== Vector2i(1,0):
 				var toilet = ToiletScene.instantiate()
 				toilet.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
-				toilet.scale *= Globals.GRID_SIZE/2
+				toilet.scale *= Globals.GRID_SIZE
+				toilet.rotation_degrees.y = tilemap.get_cell_source_id(tile)*90
+				add_child(toilet)
 				
-				print(toilet.position, toilet.scale)
 			for x in range(0,9):
 				#portal
 				if tilemap.get_cell_atlas_coords(tile)== Vector2i(x,1):

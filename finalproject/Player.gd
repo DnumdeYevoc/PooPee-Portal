@@ -40,5 +40,10 @@ func _physics_process(delta: float) -> void:
 		
 	velocity = Vector3i(dir*speed*delta)+gravity*Globals.GRAVITY
 	move_and_slide()
-
+func finish_level():
+	if ResourceLoader.exists("res://Map"+str(Globals.CUR_LEVEL+1)+".tscn"):
+		Globals.CUR_LEVEL +=1
+		get_tree().reload_current_scene()
+	else:
+		get_tree().change_scene_to_file("res://main_menu.tscn")
 	

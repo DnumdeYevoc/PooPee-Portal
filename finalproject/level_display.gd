@@ -4,7 +4,7 @@ extends Area2D
 
 func _on_mouse_entered() -> void:
 	$Door.frame = 1
-	$Button.text = "Play Level"+str(Level)
+	$Button.text = "Play Level "+str(Level)
 	$Button.visible = true
 
 func _on_button_pressed() -> void:
