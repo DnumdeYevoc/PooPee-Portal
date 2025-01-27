@@ -1,27 +1,49 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm66mrkem0mt1"]
+[gd_scene load_steps=17 format=3 uid="uid://cm66mrkem0mt1"]
 
 [ext_resource type="Script" path="res://cell.gd" id="1_w24d4"]
-[ext_resource type="Texture2D" uid="uid://c842u3uhd7iyu" path="res://icon.svg" id="2_nhebq"]
+[ext_resource type="Texture2D" uid="uid://2ck44sa2j5e2" path="res://Floor.png" id="2_tppyw"]
+[ext_resource type="Texture2D" uid="uid://dxhf0cjisq5rw" path="res://Wall.png" id="3_g1ofc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57xhj"]
-albedo_texture = ExtResource("2_nhebq")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibokg"]
+albedo_texture = ExtResource("2_tppyw")
+texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_0hrk6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4adr"]
 size = Vector3(1, 1, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3ue6"]
+albedo_texture = ExtResource("2_tppyw")
+texture_filter = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxdk1"]
 size = Vector3(1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx77e"]
+albedo_texture = ExtResource("3_g1ofc")
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8unrh"]
 size = Vector3(1, 1, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmm1h"]
+albedo_texture = ExtResource("3_g1ofc")
+texture_filter = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x0b3"]
 size = Vector3(1, 1, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78rbi"]
+albedo_texture = ExtResource("3_g1ofc")
+texture_filter = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6h3qh"]
 size = Vector3(1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4raix"]
+albedo_texture = ExtResource("3_g1ofc")
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pm5dr"]
 size = Vector3(1, 1, 0)
@@ -31,7 +53,7 @@ script = ExtResource("1_w24d4")
 
 [node name="TopFace" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 1, 0)
-material_override = SubResource("StandardMaterial3D_57xhj")
+material_override = SubResource("StandardMaterial3D_ibokg")
 mesh = SubResource("QuadMesh_0hrk6")
 skeleton = NodePath("")
 
@@ -44,7 +66,7 @@ shape = SubResource("BoxShape3D_h4adr")
 
 [node name="BottomFace" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2.38498e-08, 2, 0, -2, 2.38498e-08, 0, -1, 0)
-material_override = SubResource("StandardMaterial3D_57xhj")
+material_override = SubResource("StandardMaterial3D_w3ue6")
 mesh = SubResource("QuadMesh_0hrk6")
 skeleton = NodePath("")
 
@@ -57,7 +79,7 @@ shape = SubResource("BoxShape3D_qxdk1")
 
 [node name="NorthFace" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 1)
-material_override = SubResource("StandardMaterial3D_57xhj")
+material_override = SubResource("StandardMaterial3D_jx77e")
 mesh = SubResource("QuadMesh_0hrk6")
 skeleton = NodePath("")
 
@@ -70,7 +92,7 @@ shape = SubResource("BoxShape3D_8unrh")
 
 [node name="EastFace" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, 1, 0, 0)
-material_override = SubResource("StandardMaterial3D_57xhj")
+material_override = SubResource("StandardMaterial3D_wmm1h")
 mesh = SubResource("QuadMesh_0hrk6")
 skeleton = NodePath("")
 
@@ -83,7 +105,7 @@ shape = SubResource("BoxShape3D_8x0b3")
 
 [node name="SouthFace" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
-material_override = SubResource("StandardMaterial3D_57xhj")
+material_override = SubResource("StandardMaterial3D_78rbi")
 mesh = SubResource("QuadMesh_0hrk6")
 skeleton = NodePath("")
 
@@ -96,7 +118,7 @@ shape = SubResource("BoxShape3D_6h3qh")
 
 [node name="WestFace" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1, 0, 0)
-material_override = SubResource("StandardMaterial3D_57xhj")
+material_override = SubResource("StandardMaterial3D_4raix")
 mesh = SubResource("QuadMesh_0hrk6")
 skeleton = NodePath("")
 

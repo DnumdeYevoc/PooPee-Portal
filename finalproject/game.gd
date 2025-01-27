@@ -2,15 +2,17 @@ extends Node
 
 const CellScene = preload("res://Cell.tscn")
 const PortalScene = preload("res://Portal.tscn")
-
+const ToiletScene = preload("res://toilet.tscn")
+var mapname : String = "res://Map%s.tscn"
 @export var Map : PackedScene
-
 var world := []
 var cells = []
 var portallist :=[]
 var count = -1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var name = mapname %  Globals.CUR_LEVEL
+	Map = load(name)
 	#set up envrionment specific ambiance
 	generate_map()
 
@@ -31,11 +33,15 @@ func generate_map():
 			add_child(cell)
 			cell.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
 			cells.append(cell)
-			
-			for x in range(0,2):
+			if tilemap.get_cell_atlas_coords(tile)== Vector2i(1,0):
+				var toilet = ToiletScene.instantiate()
+				toilet.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
+				toilet.scale *= Globals.GRID_SIZE/2
+				
+				print(toilet.position, toilet.scale)
+			for x in range(0,9):
 				#portal
 				if tilemap.get_cell_atlas_coords(tile)== Vector2i(x,1):
-					
 					var portal = PortalScene.instantiate()
 					portal.index= x
 					portal.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
@@ -50,6 +56,7 @@ func generate_map():
 								portal.other_portal = other_portal
 								
 					add_child(portal)
+					
 					portal.do_updates()
 				
 		if len(world)== len(tilemap_list):
@@ -61,3 +68,7 @@ func generate_map():
 			
 	count = -1
 	map.free()
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")

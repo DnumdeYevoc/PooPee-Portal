@@ -47,24 +47,26 @@ func do_updates():
 func _physics_process(_delta):
 	
 	do_updates()
-
+	
 	
 func _ready():
+	
 	$PortalVisual.set_layer_mask_value(1, false)
 	$PortalVisual.set_layer_mask_value(cull_layer, true)
 	$CameraViewport/Camera3D.set_cull_mask_value(other_portal.cull_layer, false)
 	if rot==0:
 		@warning_ignore("integer_division")
-		position.z -= (Globals.GRID_SIZE/2)-0.5
-	if rot==1:
-		@warning_ignore("integer_division")
-		position.x += (Globals.GRID_SIZE/2)-0.5
-	if rot==2:
-		@warning_ignore("integer_division")
-		position.z += (Globals.GRID_SIZE/2)-0.5
+		position.z -= (Globals.GRID_SIZE/2)-0.25
 	if rot==3:
 		@warning_ignore("integer_division")
-		position.x -= (Globals.GRID_SIZE/2)-0.5
+		
+		position.x += (Globals.GRID_SIZE/2)-0.25
+	if rot==2:
+		@warning_ignore("integer_division")
+		position.z += (Globals.GRID_SIZE/2)-0.25
+	if rot==1:
+		@warning_ignore("integer_division")
+		position.x -= (Globals.GRID_SIZE/2)-0.25
 	update_size()
 func update_size():
 	$PortalVisual.size.x = self.size.x
@@ -73,8 +75,16 @@ func update_size():
 		self.size.x + self.portal_area_x_margin * 2,
 		self.size.y + self.portal_area_y_margin * 2,
 		self.portal_area_z_margin * 2)
-	rotation_degrees.y = rot*90
 	
+	if other_portal.rot <= rot:
+		if rot-other_portal.rot == 0:
+			rotation_degrees.y =  other_portal.rotation_degrees.y
+		elif rot-other_portal.rot==1 or 3:
+			rotation_degrees.y =90+other_portal.rotation_degrees.y
+		elif  rot-other_portal.rot ==2:
+			rotation_degrees.y = 180+other_portal.rotation_degrees.y
+	else:
+		rotation_degrees.y = rot*90
 func teleport(body: PhysicsBody3D):
 	body.offset +=   other_portal.rotation.y -self.rotation.y
 	var rel_this_portal = self.global_transform.affine_inverse() * body.global_transform 

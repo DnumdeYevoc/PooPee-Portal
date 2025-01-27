@@ -1,12 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2o0ukc75ooyi"]
+[gd_scene load_steps=6 format=3 uid="uid://b2o0ukc75ooyi"]
 
 [ext_resource type="PackedScene" uid="uid://baotyfgwkgnur" path="res://Player.tscn" id="1_283go"]
 [ext_resource type="Script" path="res://game.gd" id="1_wlm3h"]
-[ext_resource type="PackedScene" uid="uid://bf4yul5kba1mo" path="res://Map.tscn" id="2_dr8kx"]
+[ext_resource type="PackedScene" uid="uid://immwoyerel40" path="res://Map1.tscn" id="2_nmm7y"]
+[ext_resource type="Texture2D" uid="uid://bgjisdsbc8ei0" path="res://MainMenu.png" id="4_cgt51"]
+
+[sub_resource type="Environment" id="Environment_mymql"]
+volumetric_fog_density = 0.3132
 
 [node name="Game" type="Node"]
 script = ExtResource("1_wlm3h")
-Map = ExtResource("2_dr8kx")
+Map = ExtResource("2_nmm7y")
 
 [node name="Player" parent="." instance=ExtResource("1_283go")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05837, 5.77036)
+
+[node name="MainMenuButton" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 156.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+icon = ExtResource("4_cgt51")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mymql")
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_button_pressed"]
