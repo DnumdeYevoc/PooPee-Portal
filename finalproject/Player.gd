@@ -12,6 +12,7 @@ var rotate_cam: bool = false
 var angle :int= 0
 var can_rotate:bool= true
 var pooped :bool=false
+var plunged := false
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	var looking = neck.transform.basis.rotated(Vector3.UP,offset)
 	dir = ( looking * Vector3(  Input.get_action_strength("Right")*-gravity.y-Input.get_action_strength("Left")*-gravity.y , 0,Input.get_action_strength("Backward")-Input.get_action_strength("Forward"))).normalized()
-	if Input.is_action_just_pressed("Space"):
+	if Input.is_action_just_pressed("Space") and plunged:
 		if not speed ==0:
 			gravity = -gravity
 			angle +=gravity.y*180

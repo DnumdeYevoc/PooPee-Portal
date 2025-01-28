@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game.gd" id="1_wlm3h"]
 [ext_resource type="PackedScene" uid="uid://immwoyerel40" path="res://Map1.tscn" id="2_nmm7y"]
 [ext_resource type="Texture2D" uid="uid://bgjisdsbc8ei0" path="res://MainMenu.png" id="4_cgt51"]
-[ext_resource type="PackedScene" uid="uid://dkh754cjkoct2" path="res://losing_screen.tscn" id="5_8t0nn"]
+[ext_resource type="PackedScene" path="res://losing_screen.tscn" id="5_8t0nn"]
 
 [sub_resource type="Environment" id="Environment_mymql"]
 volumetric_fog_density = 0.5

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://opxvm4ilt2dh"]
+
+[ext_resource type="Script" path="res://plunger.gd" id="1_3167j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jpkn"]
+albedo_color = Color(0.556863, 0.0156863, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l7l15"]
+material = SubResource("StandardMaterial3D_7jpkn")
+top_radius = 0.1
+bottom_radius = 0.4
+height = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olpu3"]
+albedo_color = Color(0.947191, 0.676701, 0.135703, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ktpmc"]
+material = SubResource("StandardMaterial3D_olpu3")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fug82"]
+height = 1.0
+radius = 0.25
+
+[node name="Plunger" type="Node3D"]
+script = ExtResource("1_3167j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0852817, 0)
+mesh = SubResource("CylinderMesh_l7l15")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.410139, 0)
+mesh = SubResource("CylinderMesh_ktpmc")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_fug82")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

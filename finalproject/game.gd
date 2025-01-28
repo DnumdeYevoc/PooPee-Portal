@@ -5,6 +5,7 @@ const PortalScene = preload("res://Portal.tscn")
 const ToiletScene = preload("res://toilet.tscn")
 const LightScene = preload("res://light.tscn")
 const PoopScene = preload("res://poop.tscn")
+const PlungerScene = preload("res://plunger.tscn")
 var mapname : String = "res://Map%s.tscn"
 @export var Map : PackedScene
 var world := []
@@ -24,8 +25,6 @@ func _ready() -> void:
 	$Player.speed = 1000
 	#set up envrionment specific ambiance
 	generate_map()
-
-
 
 func generate_map():
 	if not Map is PackedScene: return
@@ -60,6 +59,13 @@ func generate_map():
 				poop.scale *= Globals.GRID_SIZE
 				
 				add_child(poop)
+			if tilemap.get_cell_atlas_coords(tile)== Vector2i(4,0):
+				var plunger= PlungerScene.instantiate()
+				plunger.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
+				plunger.scale *= Globals.GRID_SIZE
+				plunger.rotation_degrees.z = 180
+				
+				add_child(plunger)
 				
 			for x in range(0,9):
 				#portal

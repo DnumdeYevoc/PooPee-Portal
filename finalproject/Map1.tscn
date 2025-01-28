@@ -93,7 +93,7 @@ sources/3 = SubResource("TileSetAtlasSource_ax7j1")
 sources/1 = SubResource("TileSetAtlasSource_d85ei")
 sources/0 = SubResource("TileSetAtlasSource_ek8jq")
 
-[node name="Map" type="Node2D"]
+[node name="Map2" type="Node2D"]
 script = ExtResource("1_icsjc")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
