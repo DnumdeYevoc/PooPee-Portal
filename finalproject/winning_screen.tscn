@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpo514jxxvs40"]
+
+[ext_resource type="Script" path="res://winning_screen.gd" id="1_jr0jg"]
+[ext_resource type="Texture2D" uid="uid://d6vln4g4qgub" path="res://YouMadeIt.png" id="2_pmjks"]
+
+[node name="WinningScreen" type="Node2D"]
+script = ExtResource("1_jr0jg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 82.0
+
+[node name="TextEdit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Time"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="YouMadeIt" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(4, -67)
+scale = Vector2(2, 2)
+texture = ExtResource("2_pmjks")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -85,7 +85,7 @@ func update_size():
 		elif  rot-other_portal.rot ==2:
 			
 			rotation_degrees.y = 180+other_portal.rotation_degrees.y
-			print(rotation_degrees.y, other_portal.rotation_degrees.y)
+			
 			
 	rotation_degrees.y = -rot*90
 func teleport(body: PhysicsBody3D):
@@ -101,7 +101,7 @@ func teleport(body: PhysicsBody3D):
 	other_portal.do_teleport = false
 	
 func _on_body_entered(body: Node3D) -> void:
-	print(other_portal)
+	
 	if do_teleport:
 		teleport(body)
 

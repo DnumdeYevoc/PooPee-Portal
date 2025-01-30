@@ -14,14 +14,16 @@ var portallist :=[]
 var count = -1
 @onready var bar := $Bar
 var level_time :int= 5
+var time:int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var name = mapname %  Globals.CUR_LEVEL
-	Map = load(name)
+	var nam = mapname %  Globals.CUR_LEVEL
+	Map = load(nam)
 	level_time = Globals.LEVEL_TIMES[Globals.CUR_LEVEL]
 	bar.max_value = level_time
 	bar.value = level_time
 	$LosingScreen.visible = false
+	$WinningScreen.visible = false
 	$Player.speed = 1000
 	#set up envrionment specific ambiance
 	generate_map()
@@ -55,14 +57,16 @@ func generate_map():
 				add_child(light)
 			if tilemap.get_cell_atlas_coords(tile)== Vector2i(3,0):
 				var poop = PoopScene.instantiate()
-				poop.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
-				poop.scale *= Globals.GRID_SIZE
+				@warning_ignore("integer_division")
+				poop.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE+Globals.GRID_SIZE/2,tile.y*Globals.GRID_SIZE)
+				poop.scale *= Globals.GRID_SIZE*1.5
 				
 				add_child(poop)
 			if tilemap.get_cell_atlas_coords(tile)== Vector2i(4,0):
 				var plunger= PlungerScene.instantiate()
 				plunger.position = Vector3(tile.x*Globals.GRID_SIZE,count*Globals.GRID_SIZE,tile.y*Globals.GRID_SIZE)
-				plunger.scale *= Globals.GRID_SIZE
+				@warning_ignore("integer_division")
+				plunger.scale *= Globals.GRID_SIZE/2
 				plunger.rotation_degrees.z = 180
 				
 				add_child(plunger)
@@ -100,7 +104,9 @@ func generate_map():
 	map.free()
 	
 func _physics_process(delta: float) -> void:
-	bar.value -= 1*delta
+	if not $Player.finished:
+		bar.value -= 1*delta
+		time = bar.max_value-bar.value
 	if bar.value <=0:
 		$LosingScreen/YouPeedUrself.visible = true
 		$LosingScreen/YouStink.visible = false
@@ -113,5 +119,15 @@ func _physics_process(delta: float) -> void:
 		$LosingScreen.visible = true
 		$Player.speed =0
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if $Player.finished:
+		$WinningScreen.last_level =$Player.last_level
+		$WinningScreen.time = time
+		$WinningScreen.set_time()
+		$WinningScreen.visible = true
+		$LosingScreen.visible = false
+		$Player.speed =0
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+	
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")

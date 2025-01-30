@@ -22,13 +22,13 @@ portal_area_z_margin = 0.0
 portal_area_x_margin = 0.0
 portal_area_y_margin = 0.0
 
-[node name="PortalVisual" type="CSGBox3D" parent="."]
-size = Vector3(1, 2, 0.1)
-material = SubResource("ShaderMaterial_6n14c")
-
 [node name="CameraViewport" type="SubViewport" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraViewport"]
+
+[node name="PortalVisual" type="CSGBox3D" parent="."]
+size = Vector3(1, 2, 0.1)
+material = SubResource("ShaderMaterial_6n14c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ha1ku")

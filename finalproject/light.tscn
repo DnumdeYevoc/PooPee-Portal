@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cftenx7pbibjk"]
 
 [node name="Light" type="OmniLight3D"]
-light_energy = 6.333
 omni_range = 100.0
 omni_shadow_mode = 0

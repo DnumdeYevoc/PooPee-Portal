@@ -22,24 +22,27 @@ height = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fug82"]
 height = 1.0
-radius = 0.25
 
 [node name="Plunger" type="Node3D"]
 script = ExtResource("1_3167j")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="offset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24846, -0.428489, -0.895466)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0852817, 0)
 mesh = SubResource("CylinderMesh_l7l15")
 skeleton = NodePath("../MeshInstance3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.410139, 0)
 mesh = SubResource("CylinderMesh_ktpmc")
+skeleton = NodePath("../..")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="offset/Area3D"]
 shape = SubResource("CylinderShape3D_fug82")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="offset/Area3D" to="." method="_on_area_3d_body_entered"]

@@ -13,6 +13,8 @@ var angle :int= 0
 var can_rotate:bool= true
 var pooped :bool=false
 var plunged := false
+var  finished := false
+var last_level := false
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -23,7 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if can_rotate:
 				neck.rotate_y(-event.relative.x *0.001*sens*-gravity.y)
 				cam.rotate_x(-event.relative.y *0.001*sens*-gravity.y)
-			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta: float) -> void:
 	var looking = neck.transform.basis.rotated(Vector3.UP,offset)
@@ -43,13 +45,17 @@ func _physics_process(delta: float) -> void:
 			cam.rotation_degrees.z += (5*-gravity.y)
 		else:
 			cam.rotation_degrees.z += (5*gravity.y)
-		
+	if pooped:
+		gravity.y =0 
 	velocity = Vector3i(dir*speed*delta)+gravity*Globals.GRAVITY
 	move_and_slide()
 func finish_level():
 	if ResourceLoader.exists("res://Map"+str(Globals.CUR_LEVEL+1)+".tscn"):
 		Globals.CUR_LEVEL +=1
-		get_tree().reload_current_scene()
+		
+		finished = true
 	else:
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		finished = true
+		last_level = true
+		
 	
