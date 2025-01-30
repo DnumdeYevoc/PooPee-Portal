@@ -1,15 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://immwoyerel40"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_icsjc"]
+[ext_resource type="Texture2D" uid="uid://c0cudnhhpabv3" path="res://North_TILEMAP.png" id="2_06koj"]
 [ext_resource type="Texture2D" uid="uid://qs4mv5w8si0v" path="res://West_TILEMAP.png" id="3_57imi"]
 [ext_resource type="Texture2D" uid="uid://caxg3nui5cj5v" path="res://South_TILEMAP.png" id="4_4tskb"]
 [ext_resource type="Texture2D" uid="uid://h7mbrt7swyx0" path="res://East_TILEMAP.png" id="5_7rtio"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ecmdt"]
-load_path = "res://.godot/imported/North_TILEMAP.png-94750f7d5b43ebd62a2c045af90aa124.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ek8jq"]
-texture = SubResource("CompressedTexture2D_ecmdt")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0ljo"]
+texture = ExtResource("2_06koj")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -93,13 +91,12 @@ tile_size = Vector2i(8, 8)
 sources/2 = SubResource("TileSetAtlasSource_1v4nx")
 sources/3 = SubResource("TileSetAtlasSource_ax7j1")
 sources/1 = SubResource("TileSetAtlasSource_d85ei")
-sources/0 = SubResource("TileSetAtlasSource_ek8jq")
+sources/0 = SubResource("TileSetAtlasSource_x0ljo")
 
 [node name="Map1" type="Node2D"]
 script = ExtResource("1_icsjc")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
-visible = false
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wEAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAgAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AQAAAAEAAAD/////AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vfn8j")
@@ -115,7 +112,6 @@ tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAAAAAAAAAAAAAA
 tile_set = SubResource("TileSet_vfn8j")
 
 [node name="Layer2" type="TileMapLayer" parent="."]
-visible = false
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAP//AAADAAAAAAD/////AAADAAAAAAD//wAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAEAAAADAAAAAAD//wEAAAADAAAAAAD+/wEAAAADAAAAAAD+/wAAAAADAAAAAAD+////AAADAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAEAAAAAAADAP3/AAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAADAAAAAAD/////AAADAAAAAAD//wAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAEAAAADAAAAAAD//wEAAAADAAAAAAD+/wEAAAADAAAAAAD+/wAAAAADAAAAAAD+////AAADAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAEAAAAAAADAP3/AAAAAAEAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD7//z/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAADAPz/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vfn8j")

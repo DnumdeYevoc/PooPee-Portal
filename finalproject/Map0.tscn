@@ -1,15 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://bf4yul5kba1mo"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_ci1g3"]
+[ext_resource type="Texture2D" uid="uid://c0cudnhhpabv3" path="res://North_TILEMAP.png" id="2_20odw"]
 [ext_resource type="Texture2D" uid="uid://qs4mv5w8si0v" path="res://West_TILEMAP.png" id="3_1fff6"]
 [ext_resource type="Texture2D" uid="uid://caxg3nui5cj5v" path="res://South_TILEMAP.png" id="4_ryjwp"]
 [ext_resource type="Texture2D" uid="uid://h7mbrt7swyx0" path="res://East_TILEMAP.png" id="5_hxdlb"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ecmdt"]
-load_path = "res://.godot/imported/North_TILEMAP.png-94750f7d5b43ebd62a2c045af90aa124.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kflbj"]
-texture = SubResource("CompressedTexture2D_ecmdt")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37m5e"]
+texture = ExtResource("2_20odw")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -93,7 +91,7 @@ tile_size = Vector2i(8, 8)
 sources/2 = SubResource("TileSetAtlasSource_1v4nx")
 sources/3 = SubResource("TileSetAtlasSource_ax7j1")
 sources/1 = SubResource("TileSetAtlasSource_d85ei")
-sources/0 = SubResource("TileSetAtlasSource_kflbj")
+sources/0 = SubResource("TileSetAtlasSource_37m5e")
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_ci1g3")
